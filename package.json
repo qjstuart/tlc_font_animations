@@ -1,0 +1,15 @@
+{
+  "name": "tlc_font_animations",
+  "version": "1.0.0",
+  "description": "Some experimentation with font animations for The Lounge Conjecture promo content",
+  "main": "index.js",
+  "scripts": {
+    "start": "sass --watch sass:css",
+    "build": "sass sass:css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.86.3"
+  }
+}

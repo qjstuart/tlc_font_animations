@@ -1,0 +1,148 @@
+/* ---------------------------------- */
+/*          NORMAL-STYLE FONTS        */
+/* ---------------------------------- */
+// Ultra Light Extended
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProUltLtEx.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+// Thin Extended
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProThEx.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+// Light Extended
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProLtEx.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+// Regular Extended
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProEx.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+// Medium Extended
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProMdEx.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+// Bold Extended
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProBdEx.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+// Heavy Extended
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProHvEx.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+// Black Extended
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProBlkEx.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* ---------------------------------- */
+/*            OBLIQUE FONTS           */
+/* ---------------------------------- */
+// Ultra Light Extended Oblique
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProUltLtExO.otf") format("opentype");
+  font-weight: 100;
+  font-style: oblique;
+}
+// Thin Extended Oblique
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProThExO.otf") format("opentype");
+  font-weight: 200;
+  font-style: oblique;
+}
+// Light Extended Oblique
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProLtExO.otf") format("opentype");
+  font-weight: 300;
+  font-style: oblique;
+}
+// Regular Extended Oblique
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProExO.otf") format("opentype");
+  font-weight: 400;
+  font-style: oblique;
+}
+// Medium Extended Oblique
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProMdExO.otf") format("opentype");
+  font-weight: 500;
+  font-style: oblique;
+}
+// Bold Extended Oblique
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProBdExO.otf") format("opentype");
+  font-weight: 700;
+  font-style: oblique;
+}
+// Heavy Extended Oblique
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProHvExO.otf") format("opentype");
+  font-weight: 800;
+  font-style: oblique;
+}
+// Black Extended Oblique
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: url("../fonts/HelveticaNeueLTProBlkExO.otf") format("opentype");
+  font-weight: 900;
+  font-style: oblique;
+}
+
+.oblique {
+  font-style: oblique;
+}
+
+.thin-extended {
+  font-weight: 100;
+}
+.ultra-light-extended {
+  font-weight: 200;
+}
+.light-extended {
+  font-weight: 300;
+}
+.regular-extended {
+  font-weight: 400;
+}
+.medium-extended {
+  font-weight: 500;
+}
+.bold-extended {
+  font-weight: 700;
+}
+.heavy-extended {
+  font-weight: 800;
+}
+.black-extended {
+  font-weight: 900;
+}
