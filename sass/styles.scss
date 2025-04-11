@@ -5,49 +5,59 @@
 }
 
 body {
-  font-family: system-ui;
+  font-family: "Helvetica Neue LT Pro";
   font-size: 16px;
   line-height: 1.5;
   color: #fff;
   padding: 80px 40px;
   background-color: #030303;
-
-  font-family: "Helvetica Neue LT Pro";
 }
 
-.typewriter {
+.project-title-container {
   display: flex;
   justify-content: start;
 
-  p {
+  .project-title {
+    display: flex; // Flex will allow us to control the gap between words
+    padding-right: 0.5rem; // Ensure last letter is not clipped when using oblique fonts
+    align-items: baseline;
+
     font-size: 1.5rem;
-    /* margin-inline: auto; */
     overflow: hidden;
     /* Keeps on a single line */
     white-space: nowrap;
     /* The cursor */
-    /*   border-right: 1px solid; */
+    // border-right: 1px solid;
     /* steps = number of characters */
-    animation: typing 1s steps(22) forwards, blink 1s step-end infinite;
+    // animation: typing 2s steps(22) forwards, blink 1s step-end infinite;
   }
 }
 
-.project-title {
-  display: flex;
-}
+// .project-title-container {
+//   $base-delay: 0.2s;
+
+//   @for $i from 1 through 10 {
+//     p:nth-child(#{$i}) {
+//       opacity: 0;
+//       animation-delay: $base-delay * ($i - 1);
+//     }
+//   }
+// }
 
 @keyframes typing {
   from {
+    opacity: 1;
     width: 0;
   }
 
   to {
+    opacity: 1;
     width: 100%;
   }
 }
 
-/* @keyframes blink {
-    50% {
-      border-color: transparent;
-    }
-  } */
+// @keyframes blink {
+//   50% {
+//     border-color: transparent;
+//   }
+// }
