@@ -11,10 +11,13 @@ const GENRES_TOTAL_ANIM_TIME = 1000;
 const GENRES_NUMBER_OF_REPEATS = 3;
 
 const GENRE1_NUMBER_OF_REPEATS = 4;
-const GENRE1_TOTAL_ANIM_TIME = 1000;
+const GENRE1_TOTAL_ANIM_TIME = 800;
 
 async function main() {
   await delay(1000);
+
+  // Initialize 45RPM spinner
+  const spinner = document.querySelector(".spinner img");
 
   // Import audio track
   const audio = new Audio(
@@ -84,9 +87,8 @@ async function main() {
 
   // Show & Hide 45RPM spinner
   showElement(".spinner");
-  await delay(1000);
+  await delay(800);
   hideElement(".spinner");
-  await delay(100);
 
   // Animate "house" word
   await animateGenre1(
@@ -97,11 +99,11 @@ async function main() {
   await delay(200);
   destroyElements(".line");
 
-  // Show & Hide 45RPM spinner
+  // Show & Hide 45RPM spinner (FASTER SPINNING)
+  spinner.classList.add("spin-fast");
   showElement(".spinner");
-  await delay(1000);
+  await delay(800);
   hideElement(".spinner");
-  await delay(100);
 
   //   // Animate "acidjazz" word
   await animateGenre1(
@@ -113,10 +115,10 @@ async function main() {
   destroyElements(".line");
 
   // Show & Hide 45RPM spinner
+  spinner.classList.remove("spin-fast");
   showElement(".spinner");
-  await delay(1000);
+  await delay(800);
   hideElement(".spinner");
-  await delay(100);
 
   //   // Animate "&more!" word
   await animateGenre1(
@@ -129,9 +131,8 @@ async function main() {
 
   // Show & Hide 45RPM spinner
   showElement(".spinner");
-  await delay(1000);
+  await delay(800);
   hideElement(".spinner");
-  await delay(100);
 
   // Run Genres animation
   for (let i = 0; i < 1; i++) {

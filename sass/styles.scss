@@ -111,8 +111,12 @@ body {
   top: 130px;
   left: 470px;
 
-  img {
+  .spin {
     animation: spin 1s steps(16) infinite;
+    transform-origin: 47% 45%; /* Default is the center of the element */
+  }
+  .spin-fast {
+    animation: spin 0.75s steps(32) infinite;
     transform-origin: 47% 45%; /* Default is the center of the element */
   }
 }
@@ -145,12 +149,6 @@ body {
 }
 
 @keyframes spin {
-  // 0% {
-  //   transform: rotate(0deg);
-  // }
-  // 100% {
-  //   transform: rotate(360deg);
-  // }
   to {
     transform: rotate(360deg);
   }

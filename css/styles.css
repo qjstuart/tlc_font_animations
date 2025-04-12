@@ -84,8 +84,12 @@ body {
   top: 130px;
   left: 470px;
 }
-.spinner img {
+.spinner .spin {
   animation: spin 1s steps(16) infinite;
+  transform-origin: 47% 45%; /* Default is the center of the element */
+}
+.spinner .spin-fast {
+  animation: spin 0.75s steps(32) infinite;
   transform-origin: 47% 45%; /* Default is the center of the element */
 }
 
