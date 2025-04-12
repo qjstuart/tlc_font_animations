@@ -77,6 +77,18 @@ body {
   letter-spacing: 0.25rem;
 }
 
+.spinner {
+  max-width: 200px;
+  position: fixed;
+  inset: 0;
+  top: 130px;
+  left: 470px;
+}
+.spinner img {
+  animation: spin 1s steps(16) infinite;
+  transform-origin: 47% 45%; /* Default is the center of the element */
+}
+
 @keyframes typing {
   from {
     opacity: 1;
@@ -98,6 +110,11 @@ body {
 @keyframes blink {
   50% {
     border-color: transparent;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
