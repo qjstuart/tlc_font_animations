@@ -1,4 +1,4 @@
-const TLC_TOTAL_ANIM_TIME = 740
+const TLC_TOTAL_ANIM_TIME = 755
 const TLC_NUMBER_OF_REPEATS = 4
 
 const EXC_IN_TOTAL_ANIM_TIME = 1800
@@ -24,9 +24,9 @@ async function main() {
   // Flash the exclamation mark container
   for (let i = 0; i < 3; i++) {
     hideElement(".exclamation-mark-container")
-    await delay(200)
+    await delay(210)
     showElement(".exclamation-mark-container")
-    await delay(200)
+    await delay(210)
   }
 
   // Animate out "Exclamation Marks"
