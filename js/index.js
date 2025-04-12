@@ -1,41 +1,90 @@
-const TLC_TOTAL_ANIM_TIME = 755
+const TLC_TOTAL_ANIM_TIME = 850
 const TLC_NUMBER_OF_REPEATS = 4
 
 const EXC_IN_TOTAL_ANIM_TIME = 1800
 const EXC_IN_CHARS_PER_LINE = 30
 const EXC_IN_NUMBER_OF_LINES = 9
 
-const EXC_OUT_TOTAL_ANIM_TIME = 700
+const EXC_OUT_TOTAL_ANIM_TIME = 800
+
+const GENRES_TOTAL_ANIM_TIME = 1000
+const GENRES_NUMBER_OF_REPEATS = 3
+
+const GENRE1_NUMBER_OF_REPEATS = 4
+const GENRE1_TOTAL_ANIM_TIME = 1000
 
 async function main() {
-  await delay(2000)
+  await delay(1000)
 
   // Import audio track
   const audio = new Audio("./audio/RETURN of the ORIGINAL ART FORM feat DJ MILO.mp3")
   // Start playback
   audio.play()
   // Account for silence at the beginning of the track
-  await delay(600)
+  await delay(700)
 
   // Animate in "Exclamation Marks"
-  await animateInExclamationMarks(EXC_IN_NUMBER_OF_LINES, EXC_IN_TOTAL_ANIM_TIME, EXC_IN_CHARS_PER_LINE)
-  // destroyElements(".exclamation-mark-line")
+    await animateInExclamationMarks(EXC_IN_NUMBER_OF_LINES, EXC_IN_TOTAL_ANIM_TIME, EXC_IN_CHARS_PER_LINE)
 
   // Flash the exclamation mark container
-  for (let i = 0; i < 3; i++) {
-    hideElement(".exclamation-mark-container")
-    await delay(210)
-    showElement(".exclamation-mark-container")
-    await delay(210)
-  }
+    for (let i = 0; i < 3; i++) {
+      hideElement(".exclamation-mark-container")
+      await delay(210)
+      showElement(".exclamation-mark-container")
+      await delay(210)
+    }
 
-  // Animate out "Exclamation Marks"
-  await animateOutExclamationMarks(EXC_IN_NUMBER_OF_LINES, EXC_OUT_TOTAL_ANIM_TIME)
+  // Animate out exclamation marks
+    await animateOutExclamationMarks(EXC_IN_NUMBER_OF_LINES, EXC_OUT_TOTAL_ANIM_TIME)
 
-  // Run "The Lounge Conjecture" animation
-  for (let i = 0; i < 4; i++) {
-    await animateTheLoungeConjecture(TLC_NUMBER_OF_REPEATS, TLC_TOTAL_ANIM_TIME)
+  // Remove exclamation mark container
+    destroyElements(".exclamation-mark-container")
+
+  // Run TLC text animation
+    const animationRuns = 3
+    for (let i = 0; i < animationRuns; i++) {
+      await animateTheLoungeConjecture(TLC_NUMBER_OF_REPEATS, TLC_TOTAL_ANIM_TIME)
+      if (i + 1 !== animationRuns) {
+        destroyElements(".project-title")
+      }
+      await delay(100)
+    }
+
+  // Flash the project title container
+    for (let i = 0; i < 3; i++) {
+      hideElement(".project-title-container")
+      await delay(150)
+      showElement(".project-title-container")
+      await delay(150)
+    }
+
+  // Clear project title animation
     destroyElements(".project-title")
+
+  //   // Animate "breakbeat" word
+  await animateGenre1("BREAKBEAT", GENRE1_NUMBER_OF_REPEATS, GENRE1_TOTAL_ANIM_TIME)
+  await delay(200)
+  destroyElements(".line")
+
+  // Animate "house" word
+  await animateGenre1("HOUSE", GENRE1_NUMBER_OF_REPEATS, GENRE1_TOTAL_ANIM_TIME)
+  await delay(200)
+  destroyElements(".line")
+
+  //   // Animate "acidjazz" word
+  await animateGenre1("ACIDJAZZ", GENRE1_NUMBER_OF_REPEATS, GENRE1_TOTAL_ANIM_TIME)
+  await delay(200)
+  destroyElements(".line")
+
+  //   // Animate "&more!" word
+  await animateGenre1("&MORE!", GENRE1_NUMBER_OF_REPEATS, GENRE1_TOTAL_ANIM_TIME)
+  await delay(200)
+  destroyElements(".line")
+
+  // Run Genres animation
+  for (let i = 0; i < 1; i++) {
+    await animateGenres(GENRES_NUMBER_OF_REPEATS, GENRES_TOTAL_ANIM_TIME)
+    // destroyElements(".genre")
     await delay(100)
   }
 
@@ -159,7 +208,6 @@ async function animateInExclamationMarks(numberOfLines, totalAnimationTime, char
     const line = document.createElement("p")
     line.classList.add("exclamation-mark-line", "regular-extended", "oblique", "letter-spacing")
     line.style.animation = `typing ${animationDelay / 1000}s steps(200) forwards`
-    // line.textContent = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     line.textContent = "!".repeat(charsPerLine)
 
     exclamationMarkContainer.appendChild(line)
@@ -178,7 +226,263 @@ async function animateOutExclamationMarks(numberOfLines, totalAnimationTime) {
   }
 }
 
-async function animateGenres(numberOfRepeats, totalAnimationTime) {}
+async function animateGenres(numberOfRepeats, totalAnimationTime) {
+  // Select the target container
+  const genresContainerDiv = document.querySelector(".genres-container div")
+
+  // Create <p> elements with the class 'genre'
+  // Each one will be a variant of the genre, with different fonts
+  const genre1P = document.createElement("p")
+  const genre2P = document.createElement("p")
+  const genre3P = document.createElement("p")
+  const genre4P = document.createElement("p")
+  genre1P.classList.add("genre")
+  genre2P.classList.add("genre")
+  genre3P.classList.add("genre")
+  genre4P.classList.add("genre")
+
+  // Create array to store project title variants
+  const genreVariants = [genre1P, genre2P, genre3P, genre4P]
+
+  /* ------------------------------------------- */
+  /*          POPULATE TITLE VARIANT 1           */
+  /* ------------------------------------------- */
+  const breakbeat1Span = document.createElement("span")
+  breakbeat1Span.classList.add("black-extended", "oblique")
+  breakbeat1Span.textContent = "BREAKBEAT"
+
+  const house1Span = document.createElement("span")
+  house1Span.classList.add("bold-extended", "oblique")
+  house1Span.textContent = "HOUSE"
+
+  const acidJazz1Span = document.createElement("span")
+  acidJazz1Span.classList.add("regular-extended", "oblique")
+  acidJazz1Span.textContent = "ACIDJAZZ"
+
+  const andMore1Span = document.createElement("span")
+  andMore1Span.classList.add("thin-extended", "oblique")
+  andMore1Span.textContent = "&MORE!"
+
+  // Append the <span> elements to the <p> element
+  genre1P.appendChild(breakbeat1Span)
+  genre1P.appendChild(house1Span)
+  genre1P.appendChild(acidJazz1Span)
+  genre1P.appendChild(andMore1Span)
+
+  /* ------------------------------------------- */
+  /*          POPULATE TITLE VARIANT 2           */
+  /* ------------------------------------------- */
+  const breakbeat2Span = document.createElement("span")
+  breakbeat2Span.classList.add("thin-extended", "oblique")
+  breakbeat2Span.textContent = "BREAKBEAT"
+
+  const house2Span = document.createElement("span")
+  house2Span.classList.add("black-extended", "oblique")
+  house2Span.textContent = "HOUSE"
+
+  const acidJazz2Span = document.createElement("span")
+  acidJazz2Span.classList.add("bold-extended", "oblique")
+  acidJazz2Span.textContent = "ACIDJAZZ"
+
+  const andMore2Span = document.createElement("span")
+  andMore2Span.classList.add("regular-extended", "oblique")
+  andMore2Span.textContent = "&MORE!"
+
+  // Append the <span> elements to the <p> element
+  genre2P.appendChild(breakbeat2Span)
+  genre2P.appendChild(house2Span)
+  genre2P.appendChild(acidJazz2Span)
+  genre2P.appendChild(andMore2Span)
+
+  /* ------------------------------------------- */
+  /*          POPULATE TITLE VARIANT 3           */
+  /* ------------------------------------------- */
+  const breakbeat3Span = document.createElement("span")
+  breakbeat3Span.classList.add("regular-extended", "oblique")
+  breakbeat3Span.textContent = "BREAKBEAT"
+
+  const house3Span = document.createElement("span")
+  house3Span.classList.add("thin-extended", "oblique")
+  house3Span.textContent = "HOUSE"
+
+  const acidJazz3Span = document.createElement("span")
+  acidJazz3Span.classList.add("black-extended", "oblique")
+  acidJazz3Span.textContent = "ACIDJAZZ"
+
+  const andMore3Span = document.createElement("span")
+  andMore3Span.classList.add("bold-extended", "oblique")
+  andMore3Span.textContent = "&MORE!"
+
+  // Append the <span> elements to the <p> element
+  genre3P.appendChild(breakbeat3Span)
+  genre3P.appendChild(house3Span)
+  genre3P.appendChild(acidJazz3Span)
+  genre3P.appendChild(andMore3Span)
+
+  /* ------------------------------------------- */
+  /*          POPULATE TITLE VARIANT 4           */
+  /* ------------------------------------------- */
+  const breakbeat4Span = document.createElement("span")
+  breakbeat4Span.classList.add("bold-extended", "oblique")
+  breakbeat4Span.textContent = "BREAKBEAT"
+
+  const house4Span = document.createElement("span")
+  house4Span.classList.add("regular-extended", "oblique")
+  house4Span.textContent = "HOUSE"
+
+  const acidJazz4Span = document.createElement("span")
+  acidJazz4Span.classList.add("thin-extended", "oblique")
+  acidJazz4Span.textContent = "ACIDJAZZ"
+
+  const andMore4Span = document.createElement("span")
+  andMore4Span.classList.add("black-extended", "oblique")
+  andMore4Span.textContent = "&MORE!"
+
+  // Append the <span> elements to the <p> element
+  genre4P.appendChild(breakbeat4Span)
+  genre4P.appendChild(house4Span)
+  genre4P.appendChild(acidJazz4Span)
+  genre4P.appendChild(andMore4Span)
+
+  /* ------------------------------------------- */
+  /*         PRE-CALCULATE LOOP VARIABLES        */
+  /* ------------------------------------------- */
+  // Calculate the total number of lines to be printed
+  const totalNumberOfLines = numberOfRepeats * genreVariants.length
+  // Calculate the amount of time to print each line
+  const animationDelay = totalAnimationTime / totalNumberOfLines
+
+  /* -------------------------------------------------- */
+  /*    PRINT ALL TITLE VARIANTS * NUMBER OF REPEATS    */
+  /* -------------------------------------------------- */
+  // Start printing lines
+  for (let i = 0; i < numberOfRepeats; i++) {
+    // // Create a copy of all variants
+    const newGenreVariants = genreVariants.map((variant) => variant.cloneNode(true))
+
+    // Print all variants ONCE
+    for (let j = 0; j < newGenreVariants.length; j++) {
+      const variant = newGenreVariants[j]
+
+      // Set the animation property for the line
+      variant.style.animation = `typing ${animationDelay / 1000}s steps(22) forwards`
+
+      // Append variant to DOM as new line
+      genresContainerDiv.appendChild(variant)
+
+      // Wait for the animation to finish before printing the next line
+      await delay(animationDelay)
+    }
+  }
+}
+
+async function animateGenre1(word, numberOfRepeats, totalAnimationTime) {
+  // Select the target container
+  const wordContainerDiv = document.querySelector(".word-container div")
+
+  // Create <p> elements with the class 'word'
+  // Each one will be a variant of the word, with different fonts
+  const lineA = document.createElement("p")
+  const lineB = document.createElement("p")
+  const lineC = document.createElement("p")
+  lineA.classList.add("line")
+  lineB.classList.add("line")
+  lineC.classList.add("line")
+
+  // Create array to store project title variants
+  const lineVariants = [lineA, lineB, lineC]
+
+  /* ------------------------------------------- */
+  /*           POPULATE LINE VARIANT A           */
+  /* ------------------------------------------- */
+  const word1a = document.createElement("span")
+  word1a.classList.add("black-extended", "oblique")
+  word1a.textContent = word
+
+  const word2a = document.createElement("span")
+  word2a.classList.add("bold-extended", "oblique")
+  word2a.textContent = word
+
+  const word3a = document.createElement("span")
+  word3a.classList.add("regular-extended", "oblique")
+  word3a.textContent = word
+
+  // Construct the first line (<p>) with the three words (<span>)
+  lineA.appendChild(word1a)
+  lineA.appendChild(word2a)
+  lineA.appendChild(word3a)
+
+  /* ------------------------------------------- */
+  /*           POPULATE LINE VARIANT B           */
+  /* ------------------------------------------- */
+  const word1b = document.createElement("span")
+  word1b.classList.add("black-extended", "oblique")
+  word1b.textContent = word
+
+  const word2b = document.createElement("span")
+  word2b.classList.add("bold-extended", "oblique")
+  word2b.textContent = word
+
+  const word3b = document.createElement("span")
+  word3b.classList.add("regular-extended", "oblique")
+  word3b.textContent = word
+
+  // Construct the first line (<p>) with the three words (<span>)
+  lineB.appendChild(word1b)
+  lineB.appendChild(word2b)
+  lineB.appendChild(word3b)
+
+  /* ------------------------------------------- */
+  /*           POPULATE LINE VARIANT C           */
+  /* ------------------------------------------- */
+  const word1c = document.createElement("span")
+  word1c.classList.add("bold-extended", "oblique")
+  word1c.textContent = word
+
+  const word2c = document.createElement("span")
+  word2c.classList.add("regular-extended", "oblique")
+  word2c.textContent = word
+
+  const word3c = document.createElement("span")
+  word3c.classList.add("black-extended", "oblique")
+  word3c.textContent = word
+
+  // Append the <span> elements to the <p> element
+  lineC.appendChild(word1c)
+  lineC.appendChild(word2c)
+  lineC.appendChild(word3c)
+
+  /* ------------------------------------------- */
+  /*         PRE-CALCULATE LOOP VARIABLES        */
+  /* ------------------------------------------- */
+  // Calculate the total number of lines to be printed
+  const totalNumberOfLines = numberOfRepeats * lineVariants.length
+  // Calculate the amount of time to print each line
+  const animationDelay = totalAnimationTime / totalNumberOfLines
+
+  /* -------------------------------------------------- */
+  /*    PRINT ALL TITLE VARIANTS * NUMBER OF REPEATS    */
+  /* -------------------------------------------------- */
+  // Start printing lines
+  for (let i = 0; i < numberOfRepeats; i++) {
+    // // Create a copy of all variants
+    const newLineVariants = lineVariants.map((variant) => variant.cloneNode(true))
+
+    // Print all variants ONCE
+    for (let j = 0; j < newLineVariants.length; j++) {
+      const variant = newLineVariants[j]
+
+      // Set the animation property for the line
+      variant.style.animation = `typing ${animationDelay / 1000}s steps(22) forwards`
+
+      // Append variant to DOM as new line
+      wordContainerDiv.appendChild(variant)
+
+      // Wait for the animation to finish before printing the next line
+      await delay(animationDelay)
+    }
+  }
+}
 
 function showElement(element) {
   const targetElement = document.querySelector(element)

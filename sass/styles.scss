@@ -15,10 +15,10 @@ body {
 
 .project-title-container {
   display: flex;
-  justify-content: start;
+  justify-content: center;
 
   div {
-    width: 100%;
+    // width: 100%;
 
     .project-title {
       display: flex; // Flex will allow us to control the gap between words
@@ -55,7 +55,7 @@ body {
 
 .genres-container {
   display: flex;
-  justify-content: start;
+  justify-content: center;
 
   div {
     // width: 100%;
@@ -64,7 +64,7 @@ body {
       display: flex; // Flex will allow us to control the gap between words
       padding-right: 0.5rem; // Ensure last letter is not clipped when using oblique fonts
       align-items: baseline;
-      // justify-content: center;
+      justify-content: center;
 
       overflow: hidden;
       /* Keeps on a single line */
@@ -72,7 +72,25 @@ body {
       /* The cursor */
       // border-right: 1px solid;
       /* steps = number of characters */
-      animation: typing 2s steps(22) forwards, blink 1s step-end infinite;
+      // animation: typing 2s steps(22) forwards, blink 1s step-end infinite;
+    }
+  }
+}
+
+.word-container {
+  display: flex;
+  justify-content: center;
+
+  div {
+    .line {
+      display: flex; // Flex will allow us to control the gap between words
+      padding-right: 0.5rem; // Ensure last letter is not clipped when using oblique fonts
+      align-items: baseline;
+      justify-content: center;
+
+      overflow: hidden;
+      /* Keeps on a single line */
+      white-space: nowrap;
     }
   }
 }

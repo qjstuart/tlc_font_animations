@@ -15,10 +15,7 @@ body {
 
 .project-title-container {
   display: flex;
-  justify-content: start;
-}
-.project-title-container div {
-  width: 100%;
+  justify-content: center;
 }
 .project-title-container div .project-title {
   display: flex;
@@ -44,18 +41,32 @@ body {
 
 .genres-container {
   display: flex;
-  justify-content: start;
+  justify-content: center;
 }
 .genres-container div .genre {
   display: flex;
   padding-right: 0.5rem;
   align-items: baseline;
+  justify-content: center;
   overflow: hidden;
   /* Keeps on a single line */
   white-space: nowrap;
   /* The cursor */
   /* steps = number of characters */
-  animation: typing 2s steps(22) forwards, blink 1s step-end infinite;
+}
+
+.word-container {
+  display: flex;
+  justify-content: center;
+}
+.word-container div .line {
+  display: flex;
+  padding-right: 0.5rem;
+  align-items: baseline;
+  justify-content: center;
+  overflow: hidden;
+  /* Keeps on a single line */
+  white-space: nowrap;
 }
 
 .hidden {
