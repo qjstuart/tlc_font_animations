@@ -5,8 +5,8 @@
 }
 
 body {
-  font-family: "Helvetica Neue LT Pro";
-  font-size: 16px;
+  font-family: "Helvetica Neue LT Pro Extended";
+  font-size: 1rem;
   line-height: 1.5;
   color: #fff;
   padding: 80px 40px;
@@ -17,32 +17,74 @@ body {
   display: flex;
   justify-content: start;
 
-  .project-title {
-    display: flex; // Flex will allow us to control the gap between words
-    padding-right: 0.5rem; // Ensure last letter is not clipped when using oblique fonts
-    align-items: baseline;
+  div {
+    width: 100%;
 
-    font-size: 1.5rem;
-    overflow: hidden;
-    /* Keeps on a single line */
-    white-space: nowrap;
-    /* The cursor */
-    // border-right: 1px solid;
-    /* steps = number of characters */
-    // animation: typing 2s steps(22) forwards, blink 1s step-end infinite;
+    .project-title {
+      display: flex; // Flex will allow us to control the gap between words
+      padding-right: 0.5rem; // Ensure last letter is not clipped when using oblique fonts
+      align-items: baseline;
+      justify-content: center;
+
+      overflow: hidden;
+      /* Keeps on a single line */
+      white-space: nowrap;
+      /* The cursor */
+      // border-right: 1px solid;
+      /* steps = number of characters */
+      // animation: typing 2s steps(22) forwards, blink 1s step-end infinite;
+    }
   }
 }
 
-// .project-title-container {
-//   $base-delay: 0.2s;
+.exclamation-mark-container {
+  display: flex;
+  justify-content: center;
 
-//   @for $i from 1 through 10 {
-//     p:nth-child(#{$i}) {
-//       opacity: 0;
-//       animation-delay: $base-delay * ($i - 1);
-//     }
-//   }
-// }
+  div {
+    .exclamation-mark-line {
+      // font-family: "Helvetica Neue LT Pro Outline";
+      // font-style: italic;
+      overflow: hidden;
+      white-space: nowrap;
+      padding-right: 0.5rem; // Ensure last letter is not clipped when using oblique fonts
+      // border-right: 1px solid;
+    }
+  }
+}
+
+.genres-container {
+  display: flex;
+  justify-content: start;
+
+  div {
+    // width: 100%;
+
+    .genre {
+      display: flex; // Flex will allow us to control the gap between words
+      padding-right: 0.5rem; // Ensure last letter is not clipped when using oblique fonts
+      align-items: baseline;
+      // justify-content: center;
+
+      overflow: hidden;
+      /* Keeps on a single line */
+      white-space: nowrap;
+      /* The cursor */
+      // border-right: 1px solid;
+      /* steps = number of characters */
+      animation: typing 2s steps(22) forwards, blink 1s step-end infinite;
+    }
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.letter-spacing {
+  $letter-spacing: 0.25rem; // Adjust this value to control the spacing between letters
+  letter-spacing: $letter-spacing;
+}
 
 @keyframes typing {
   from {
@@ -56,8 +98,17 @@ body {
   }
 }
 
-// @keyframes blink {
-//   50% {
-//     border-color: transparent;
-//   }
-// }
+@keyframes typing-reverse {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

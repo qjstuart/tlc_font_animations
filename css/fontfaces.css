@@ -1,105 +1,118 @@
 /* ---------------------------------- */
-/*          NORMAL-STYLE FONTS        */
+/*    NORMAL-STYLE FONTS (EXTENDED)   */
 /* ---------------------------------- */
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProUltLtEx.otf") format("opentype");
   font-weight: 100;
   font-style: normal;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProThEx.otf") format("opentype");
   font-weight: 200;
   font-style: normal;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProLtEx.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProEx.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProMdEx.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProBdEx.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProHvEx.otf") format("opentype");
   font-weight: 800;
   font-style: normal;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProBlkEx.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
 }
 /* ---------------------------------- */
-/*            OBLIQUE FONTS           */
+/*       OBLIQUE FONTS (EXTENDED)     */
 /* ---------------------------------- */
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProUltLtExO.otf") format("opentype");
   font-weight: 100;
   font-style: oblique;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProThExO.otf") format("opentype");
   font-weight: 200;
   font-style: oblique;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProLtExO.otf") format("opentype");
   font-weight: 300;
   font-style: oblique;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProExO.otf") format("opentype");
   font-weight: 400;
   font-style: oblique;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProMdExO.otf") format("opentype");
   font-weight: 500;
   font-style: oblique;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProBdExO.otf") format("opentype");
   font-weight: 700;
   font-style: oblique;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProHvExO.otf") format("opentype");
   font-weight: 800;
   font-style: oblique;
 }
 @font-face {
-  font-family: "Helvetica Neue LT Pro";
+  font-family: "Helvetica Neue LT Pro Extended";
   src: url("../fonts/HelveticaNeueLTProBlkExO.otf") format("opentype");
   font-weight: 900;
   font-style: oblique;
 }
+/* ---------------------------------- */
+/*            OUTLINE FONTS           */
+/* ---------------------------------- */
+@font-face {
+  font-family: "Helvetica Neue LT Pro Outline";
+  src: url("../fonts/HelveticaNeueLTProBdOu.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+.outline {
+  font-family: "Helvetica Neue LT Pro Outline";
+}
+
 .oblique {
   font-style: oblique;
 }

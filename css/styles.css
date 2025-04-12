@@ -5,8 +5,8 @@
 }
 
 body {
-  font-family: "Helvetica Neue LT Pro";
-  font-size: 16px;
+  font-family: "Helvetica Neue LT Pro Extended";
+  font-size: 1rem;
   line-height: 1.5;
   color: #fff;
   padding: 80px 40px;
@@ -17,16 +17,53 @@ body {
   display: flex;
   justify-content: start;
 }
-.project-title-container .project-title {
+.project-title-container div {
+  width: 100%;
+}
+.project-title-container div .project-title {
   display: flex;
   padding-right: 0.5rem;
   align-items: baseline;
-  font-size: 1.5rem;
+  justify-content: center;
   overflow: hidden;
   /* Keeps on a single line */
   white-space: nowrap;
   /* The cursor */
   /* steps = number of characters */
+}
+
+.exclamation-mark-container {
+  display: flex;
+  justify-content: center;
+}
+.exclamation-mark-container div .exclamation-mark-line {
+  overflow: hidden;
+  white-space: nowrap;
+  padding-right: 0.5rem;
+}
+
+.genres-container {
+  display: flex;
+  justify-content: start;
+}
+.genres-container div .genre {
+  display: flex;
+  padding-right: 0.5rem;
+  align-items: baseline;
+  overflow: hidden;
+  /* Keeps on a single line */
+  white-space: nowrap;
+  /* The cursor */
+  /* steps = number of characters */
+  animation: typing 2s steps(22) forwards, blink 1s step-end infinite;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.letter-spacing {
+  letter-spacing: 0.25rem;
 }
 
 @keyframes typing {
@@ -37,6 +74,19 @@ body {
   to {
     opacity: 1;
     width: 100%;
+  }
+}
+@keyframes typing-reverse {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
   }
 }
 

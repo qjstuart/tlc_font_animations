@@ -1,8 +1,54 @@
+const TLC_TOTAL_ANIM_TIME = 740
+const TLC_NUMBER_OF_REPEATS = 4
+
+const EXC_IN_TOTAL_ANIM_TIME = 1800
+const EXC_IN_CHARS_PER_LINE = 30
+const EXC_IN_NUMBER_OF_LINES = 9
+
+const EXC_OUT_TOTAL_ANIM_TIME = 700
+
+async function main() {
+  await delay(2000)
+
+  // Import audio track
+  const audio = new Audio("./audio/RETURN of the ORIGINAL ART FORM feat DJ MILO.mp3")
+  // Start playback
+  audio.play()
+  // Account for silence at the beginning of the track
+  await delay(600)
+
+  // Animate in "Exclamation Marks"
+  await animateInExclamationMarks(EXC_IN_NUMBER_OF_LINES, EXC_IN_TOTAL_ANIM_TIME, EXC_IN_CHARS_PER_LINE)
+  // destroyElements(".exclamation-mark-line")
+
+  // Flash the exclamation mark container
+  for (let i = 0; i < 3; i++) {
+    hideElement(".exclamation-mark-container")
+    await delay(200)
+    showElement(".exclamation-mark-container")
+    await delay(200)
+  }
+
+  // Animate out "Exclamation Marks"
+  await animateOutExclamationMarks(EXC_IN_NUMBER_OF_LINES, EXC_OUT_TOTAL_ANIM_TIME)
+
+  // Run "The Lounge Conjecture" animation
+  for (let i = 0; i < 4; i++) {
+    await animateTheLoungeConjecture(TLC_NUMBER_OF_REPEATS, TLC_TOTAL_ANIM_TIME)
+    destroyElements(".project-title")
+    await delay(100)
+  }
+
+  // Pause playback
+  audio.pause()
+}
+
 async function animateTheLoungeConjecture(numberOfRepeats, totalAnimationTime) {
   // Select the target container
   const projectTitleContainerDiv = document.querySelector(".project-title-container div")
 
-  // Create <p> element (sentence) with the class 'project-title'
+  // Create <p> elements with the class 'project-title'
+  // Each one will be a variant of the project title, with different fonts
   const projectTitle1 = document.createElement("p")
   const projectTitle2 = document.createElement("p")
   const projectTitle3 = document.createElement("p")
@@ -14,19 +60,19 @@ async function animateTheLoungeConjecture(numberOfRepeats, totalAnimationTime) {
   const projectTitleVariants = [projectTitle1, projectTitle2, projectTitle3]
 
   /* ------------------------------------------- */
-  /*            CREATE TITLE VARIANT 1           */
+  /*          POPULATE TITLE VARIANT 1           */
   /* ------------------------------------------- */
   const the1 = document.createElement("span")
   the1.classList.add("black-extended", "oblique")
-  the1.textContent = "the"
+  the1.textContent = "THE"
 
   const lounge1 = document.createElement("span")
   lounge1.classList.add("bold-extended", "oblique")
-  lounge1.textContent = "lounge"
+  lounge1.textContent = "LOUNGE"
 
   const conjecture1 = document.createElement("span")
   conjecture1.classList.add("regular-extended", "oblique")
-  conjecture1.textContent = "conjecture"
+  conjecture1.textContent = "CONJECTURE"
 
   // Append the <span> elements to the <p> element
   projectTitle1.appendChild(the1)
@@ -34,19 +80,19 @@ async function animateTheLoungeConjecture(numberOfRepeats, totalAnimationTime) {
   projectTitle1.appendChild(conjecture1)
 
   /* ------------------------------------------- */
-  /*            CREATE TITLE VARIANT 2           */
+  /*          POPULATE TITLE VARIANT 2           */
   /* ------------------------------------------- */
   const the2 = document.createElement("span")
   the2.classList.add("regular-extended", "oblique")
-  the2.textContent = "the"
+  the2.textContent = "THE"
 
   const lounge2 = document.createElement("span")
   lounge2.classList.add("black-extended", "oblique")
-  lounge2.textContent = "lounge"
+  lounge2.textContent = "LOUNGE"
 
   const conjecture2 = document.createElement("span")
   conjecture2.classList.add("bold-extended", "oblique")
-  conjecture2.textContent = "conjecture"
+  conjecture2.textContent = "CONJECTURE"
 
   // Append the <span> elements to the <p> element
   projectTitle2.appendChild(the2)
@@ -54,30 +100,36 @@ async function animateTheLoungeConjecture(numberOfRepeats, totalAnimationTime) {
   projectTitle2.appendChild(conjecture2)
 
   /* ------------------------------------------- */
-  /*            CREATE TITLE VARIANT 3           */
+  /*          POPULATE TITLE VARIANT 3           */
   /* ------------------------------------------- */
   const the3 = document.createElement("span")
   the3.classList.add("bold-extended", "oblique")
-  the3.textContent = "the"
+  the3.textContent = "THE"
 
   const lounge3 = document.createElement("span")
   lounge3.classList.add("regular-extended", "oblique")
-  lounge3.textContent = "lounge"
+  lounge3.textContent = "LOUNGE"
 
   const conjecture3 = document.createElement("span")
   conjecture3.classList.add("black-extended", "oblique")
-  conjecture3.textContent = "conjecture"
+  conjecture3.textContent = "CONJECTURE"
 
   // Append the <span> elements to the <p> element
   projectTitle3.appendChild(the3)
   projectTitle3.appendChild(lounge3)
   projectTitle3.appendChild(conjecture3)
 
+  /* ------------------------------------------- */
+  /*         PRE-CALCULATE LOOP VARIABLES        */
+  /* ------------------------------------------- */
   // Calculate the total number of lines to be printed
   const totalNumberOfLines = numberOfRepeats * projectTitleVariants.length
   // Calculate the amount of time to print each line
   const animationDelay = totalAnimationTime / totalNumberOfLines
 
+  /* -------------------------------------------------- */
+  /*    PRINT ALL TITLE VARIANTS * NUMBER OF REPEATS    */
+  /* -------------------------------------------------- */
   // Start printing lines
   for (let i = 0; i < numberOfRepeats; i++) {
     // // Create a copy of all variants
@@ -88,7 +140,7 @@ async function animateTheLoungeConjecture(numberOfRepeats, totalAnimationTime) {
       const variant = newProjectTitleVariants[j]
 
       // Set the animation property for the line
-      variant.style.animation = `typing ${animationDelay / 1000}s steps(22) forwards, blink 1s step-end infinite`
+      //   variant.style.animation = `typing ${animationDelay / 1000}s steps(22) forwards`
 
       // Append variant to DOM as new line
       projectTitleContainerDiv.appendChild(variant)
@@ -96,28 +148,68 @@ async function animateTheLoungeConjecture(numberOfRepeats, totalAnimationTime) {
       // Wait for the animation to finish before printing the next line
       await delay(animationDelay)
     }
-
-    //
-    // await delay(animationDelay * projectTitleVariants.length)
-
-    // // Create a copy of the first line
-    // const newLine = projectTitle1.cloneNode(true)
-
-    // // Set the animation property for the new line
-    // newLine.style = `animation: typing ${animationDelay / 1000}s steps(22) forwards, blink 1s step-end infinite;`
-
-    // // Add the new line to the DOM
-    // projectTitleContainerDiv.appendChild(newLine)
-
-    // // Wait for the animation to finish before printing the next line
-    // await delay(animationDelay)
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  animateTheLoungeConjecture(4, 1000)
-})
+async function animateInExclamationMarks(numberOfLines, totalAnimationTime, charsPerLine) {
+  const exclamationMarkContainer = document.querySelector(".exclamation-mark-container div")
+  const animationDelay = totalAnimationTime / numberOfLines
+
+  for (let i = 0; i < numberOfLines; i++) {
+    const line = document.createElement("p")
+    line.classList.add("exclamation-mark-line", "regular-extended", "oblique", "letter-spacing")
+    line.style.animation = `typing ${animationDelay / 1000}s steps(200) forwards`
+    // line.textContent = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    line.textContent = "!".repeat(charsPerLine)
+
+    exclamationMarkContainer.appendChild(line)
+    await delay(animationDelay)
+  }
+}
+
+async function animateOutExclamationMarks(numberOfLines, totalAnimationTime) {
+  const exclamationMarkLines = Array.from(document.querySelectorAll(".exclamation-mark-line")).reverse()
+  const animationDelay = totalAnimationTime / numberOfLines
+
+  for (const line of exclamationMarkLines) {
+    line.style.animation = `typing-reverse ${animationDelay / 1000}s steps(200) forwards`
+    await delay(animationDelay)
+    line.style.opacity = 0
+  }
+}
+
+async function animateGenres(numberOfRepeats, totalAnimationTime) {}
+
+function showElement(element) {
+  const targetElement = document.querySelector(element)
+  if (targetElement) {
+    targetElement.classList.remove("hidden")
+  }
+}
+
+function hideElement(element) {
+  const targetElement = document.querySelector(element)
+  if (targetElement) {
+    targetElement.classList.add("hidden")
+  }
+}
+
+function destroyElements(element) {
+  /* ------------------------------------------- */
+  /*              DESTROY ANIMATION              */
+  /* ------------------------------------------- */
+  // Remove all variants from the DOM
+  const allElements = document.querySelectorAll(element)
+  console.log(allElements)
+  allElements.forEach((element) => {
+    element.remove()
+  })
+}
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  main()
+})
