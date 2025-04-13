@@ -47,7 +47,7 @@ body {
   display: flex;
   padding-right: 0.5rem;
   align-items: baseline;
-  justify-content: center;
+  justify-content: start;
   overflow: hidden;
   /* Keeps on a single line */
   white-space: nowrap;

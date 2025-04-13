@@ -64,7 +64,7 @@ body {
       display: flex; // Flex will allow us to control the gap between words
       padding-right: 0.5rem; // Ensure last letter is not clipped when using oblique fonts
       align-items: baseline;
-      justify-content: center;
+      justify-content: start;
 
       overflow: hidden;
       /* Keeps on a single line */

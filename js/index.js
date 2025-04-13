@@ -1,11 +1,11 @@
-const TLC_TOTAL_ANIM_TIME = 850
+const TLC_TOTAL_ANIM_TIME = 740
 const TLC_NUMBER_OF_REPEATS = 4
 
-const EXC_IN_TOTAL_ANIM_TIME = 1800
+const EXC_IN_TOTAL_ANIM_TIME = 1700
 const EXC_IN_CHARS_PER_LINE = 30
 const EXC_IN_NUMBER_OF_LINES = 12
 
-const EXC_OUT_TOTAL_ANIM_TIME = 800
+const EXC_OUT_TOTAL_ANIM_TIME = 700
 
 const GENRES_TOTAL_ANIM_TIME = 1500
 const GENRES_NUMBER_OF_REPEATS = 3
@@ -32,9 +32,9 @@ async function main() {
   // Flash the exclamation mark container
   for (let i = 0; i < 3; i++) {
     hideElement(".exclamation-mark-container")
-    await delay(210)
+    await delay(200)
     showElement(".exclamation-mark-container")
-    await delay(210)
+    await delay(200)
   }
 
   // Animate out exclamation marks
@@ -66,7 +66,7 @@ async function main() {
 
   // Animate "breakbeat" word
   await animateGenre3Variants("BREAKBEAT", GENRE1_NUMBER_OF_REPEATS, GENRE1_TOTAL_ANIM_TIME)
-  await delay(200)
+  await delay(190)
   destroyElements(".line")
 
   // Show & Hide 45RPM spinner
@@ -76,7 +76,7 @@ async function main() {
 
   // Animate "house" word
   await animateGenre3Variants("HOUSE", GENRE1_NUMBER_OF_REPEATS, GENRE1_TOTAL_ANIM_TIME)
-  await delay(200)
+  await delay(190)
   destroyElements(".line")
 
   // Show & Hide 45RPM spinner (FASTER SPINNING)
@@ -87,7 +87,7 @@ async function main() {
 
   //   // Animate "acidjazz" word
   await animateGenre3Variants("ACIDJAZZ", GENRE1_NUMBER_OF_REPEATS, GENRE1_TOTAL_ANIM_TIME)
-  await delay(200)
+  await delay(190)
   destroyElements(".line")
 
   // Show & Hide 45RPM spinner
@@ -98,7 +98,7 @@ async function main() {
 
   //   // Animate "&more!" word
   await animateGenre3Variants("&MORE!", GENRE1_NUMBER_OF_REPEATS, GENRE1_TOTAL_ANIM_TIME)
-  await delay(200)
+  await delay(190)
   destroyElements(".line")
 
   // Show & Hide 45RPM spinner
@@ -413,6 +413,17 @@ async function animateGenres(numberOfRepeats, totalAnimationTime) {
     }
   }
 }
+
+async function animateOutGenres(numberOfLines, totalAnimationTime) {
+    const exclamationMarkLines = Array.from(document.querySelectorAll(".exclamation-mark-line")).reverse()
+    const animationDelay = totalAnimationTime / numberOfLines
+  
+    for (const line of exclamationMarkLines) {
+      line.style.animation = `typing-reverse ${animationDelay / 1000}s steps(200) forwards`
+      await delay(animationDelay)
+      line.style.opacity = 0
+    }
+  }
 
 async function animateGenre3Variants(word, numberOfRepeats, totalAnimationTime) {
   // Select the target container
