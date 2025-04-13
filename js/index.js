@@ -146,7 +146,7 @@ async function main() {
   }
 
   // Leave the genres container visible for a bit
-  await delay(80);
+  await delay(100);
 
   // Flash the genres container
   for (let i = 0; i < 2; i++) {
@@ -156,10 +156,10 @@ async function main() {
     await delay(230);
   }
 
-  await delay(320);
+  await delay(300);
 
   // Clear genres animation and destroy
-  await animateOutGenres(GENRES_NUMBER_OF_LINES, 750);
+  await animateOutGenres(GENRES_NUMBER_OF_LINES, 900);
   destroyElements(".genres-container");
 
   // Run TLC text animation (single line)
@@ -245,7 +245,7 @@ async function main() {
   await delay(300);
   projectTitleContainerDiv.appendChild(tlcP3.cloneNode(true));
   document.querySelector(".spinner-9").classList.remove("hidden");
-  await delay(1250);
+  await delay(1150);
 
   // Clear animations
   destroyElements(".project-title-container");
@@ -277,7 +277,7 @@ async function main() {
   }
 
   // Animate out exclamation marks
-  await animateOutExclamationMarks(EXC_IN_NUMBER_OF_LINES, 350);
+  await animateOutExclamationMarks(EXC_IN_NUMBER_OF_LINES, 1000);
 
   // Pause playback
   audio.pause();
