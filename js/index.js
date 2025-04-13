@@ -1,4 +1,4 @@
-const TLC_TOTAL_ANIM_TIME = 740
+const TLC_TOTAL_ANIM_TIME = 810
 const TLC_NUMBER_OF_REPEATS = 4
 
 const EXC_IN_TOTAL_ANIM_TIME = 1700
@@ -13,6 +13,9 @@ const GENRES_NUMBER_OF_REPEATS = 3
 const GENRE1_NUMBER_OF_REPEATS = 4
 const GENRE1_TOTAL_ANIM_TIME = 800
 
+const GENRES_NUMBER_OF_LINES = 12
+const GENRES_OUT_TOTAL_ANIM_TIME = 700
+
 async function main() {
   await delay(1000)
 
@@ -20,14 +23,13 @@ async function main() {
   const spinner = document.querySelector(".spinner img")
 
   // Import audio track
-  const audio = new Audio("./audio/RETURN of the ORIGINAL ART FORM feat DJ MILO.mp3")
+  const audio = new Audio("./audio/RETURN of the ORIGINAL ART FORM feat DJ MILO (cropped).mp3")
   // Start playback
   audio.play()
-  // Account for silence at the beginning of the track
-  await delay(700)
 
   // Animate in "Exclamation Marks"
   await animateInExclamationMarks(EXC_IN_NUMBER_OF_LINES, EXC_IN_TOTAL_ANIM_TIME, EXC_IN_CHARS_PER_LINE)
+  const exclamationMarkContainer = document.querySelector(".exclamation-mark-container").cloneNode(true)
 
   // Flash the exclamation mark container
   for (let i = 0; i < 3; i++) {
@@ -85,7 +87,7 @@ async function main() {
   await delay(800)
   hideElement(".spinner")
 
-  //   // Animate "acidjazz" word
+  // Animate "acidjazz" word
   await animateGenre3Variants("ACIDJAZZ", GENRE1_NUMBER_OF_REPEATS, GENRE1_TOTAL_ANIM_TIME)
   await delay(190)
   destroyElements(".line")
@@ -96,7 +98,7 @@ async function main() {
   await delay(800)
   hideElement(".spinner")
 
-  //   // Animate "&more!" word
+  // Animate "&more!" word
   await animateGenre3Variants("&MORE!", GENRE1_NUMBER_OF_REPEATS, GENRE1_TOTAL_ANIM_TIME)
   await delay(190)
   destroyElements(".line")
@@ -116,21 +118,136 @@ async function main() {
   // Leave the genres container visible for a bit
   await delay(700)
 
-  //   Flash the genres container 4 times
-  for (let i = 0; i < 4; i++) {
+  // Flash the genres container
+  for (let i = 0; i < 2; i++) {
     hideElement(".genres-container")
     await delay(220)
     showElement(".genres-container")
     await delay(220)
   }
 
-  // The Lounge Conjecture single line
+  // Clear genres animation and destroy
+  await animateOutGenres(GENRES_NUMBER_OF_LINES, GENRES_OUT_TOTAL_ANIM_TIME)
+  destroyElements(".genres-container")
+
+  // Run TLC text animation (single line)
+  const projectTitleContainerDiv = document.querySelector(".project-title-container div")
+  const tlcP1 = document.createElement("p")
+  const tlcP2 = document.createElement("p")
+  const tlcP3 = document.createElement("p")
+
+  tlcP1.classList.add("project-title", "justify-start", "pb-8px")
+  tlcP2.classList.add("project-title", "justify-start", "pb-8px")
+  tlcP3.classList.add("project-title", "justify-start", "pb-8px")
+
+  const the1Span = document.createElement("span")
+  const lounge1Span = document.createElement("span")
+  const conjecture1Span = document.createElement("span")
+  const the2Span = document.createElement("span")
+  const lounge2Span = document.createElement("span")
+  const conjecture2Span = document.createElement("span")
+  const the3Span = document.createElement("span")
+  const lounge3Span = document.createElement("span")
+  const conjecture3Span = document.createElement("span")
+  // Set fonts
+  the1Span.classList.add("black-extended", "oblique")
+  lounge1Span.classList.add("bold-extended", "oblique")
+  conjecture1Span.classList.add("regular-extended", "oblique")
+  the2Span.classList.add("regular-extended", "oblique")
+  lounge2Span.classList.add("black-extended", "oblique")
+  conjecture2Span.classList.add("bold-extended", "oblique")
+  the3Span.classList.add("bold-extended", "oblique")
+  lounge3Span.classList.add("regular-extended", "oblique")
+  conjecture3Span.classList.add("black-extended", "oblique")
+  // Set text content
+  the1Span.textContent = "THE"
+  lounge1Span.textContent = "LOUNGE"
+  conjecture1Span.textContent = "CONJECTURE"
+  the2Span.textContent = "THE"
+  lounge2Span.textContent = "LOUNGE"
+  conjecture2Span.textContent = "CONJECTURE"
+  the3Span.textContent = "THE"
+  lounge3Span.textContent = "LOUNGE"
+  conjecture3Span.textContent = "CONJECTURE"
+  // Append <span>s to <p>s
+  tlcP1.appendChild(the1Span)
+  tlcP1.appendChild(lounge1Span)
+  tlcP1.appendChild(conjecture1Span)
+  tlcP2.appendChild(the2Span)
+  tlcP2.appendChild(lounge2Span)
+  tlcP2.appendChild(conjecture2Span)
+  tlcP3.appendChild(the3Span)
+  tlcP3.appendChild(lounge3Span)
+  tlcP3.appendChild(conjecture3Span)
+  // Add animation style
+  tlcP1.style.animation = `typing 0.5Rs steps(22) forwards`
+  tlcP2.style.animation = `typing 0.5Rs steps(22) forwards`
+  tlcP3.style.animation = `typing 0.5Rs steps(22) forwards`
+
+  // Append to container div
+  projectTitleContainerDiv.appendChild(tlcP1.cloneNode(true))
+  document.querySelector(".spinner-1").classList.remove("hidden")
+  await delay(300)
+  projectTitleContainerDiv.appendChild(tlcP2.cloneNode(true))
+  document.querySelector(".spinner-2").classList.remove("hidden")
+  await delay(300)
+  projectTitleContainerDiv.appendChild(tlcP3.cloneNode(true))
+  document.querySelector(".spinner-3").classList.remove("hidden")
+  await delay(300)
+  projectTitleContainerDiv.appendChild(tlcP1.cloneNode(true))
+  document.querySelector(".spinner-4").classList.remove("hidden")
+  await delay(300)
+  projectTitleContainerDiv.appendChild(tlcP2.cloneNode(true))
+  document.querySelector(".spinner-5").classList.remove("hidden")
+  await delay(300)
+  projectTitleContainerDiv.appendChild(tlcP3.cloneNode(true))
+  document.querySelector(".spinner-6").classList.remove("hidden")
+  await delay(300)
+  projectTitleContainerDiv.appendChild(tlcP1.cloneNode(true))
+  document.querySelector(".spinner-7").classList.remove("hidden")
+  await delay(300)
+  projectTitleContainerDiv.appendChild(tlcP2.cloneNode(true))
+  document.querySelector(".spinner-8").classList.remove("hidden")
+  await delay(300)
+  projectTitleContainerDiv.appendChild(tlcP3.cloneNode(true))
+  document.querySelector(".spinner-9").classList.remove("hidden")
+  await delay(1000)
+
+  // Clear animations
+  destroyElements(".project-title-container")
+  destroyElements(".spinner-grid")
+
+  // Re-create "Exclamation Marks" div and animate in
+  //   const container = document.createElement("div")
+  //   container.classList.add("exclamation-mark-container")
+  //   const innerDiv = document.createElement("div")
+  //   container.appendChild(innerDiv)
+  //   document.body.appendChild(container)
+  //   await animateInExclamationMarks(EXC_IN_NUMBER_OF_LINES, EXC_IN_TOTAL_ANIM_TIME, EXC_IN_CHARS_PER_LINE)
+
+  // Disable animations on exclamation mark lines before rendering them
+  const exclamationMarkLines = exclamationMarkContainer.querySelectorAll(".exclamation-mark-line")
+  exclamationMarkLines.forEach((line) => {
+    line.style.animation = ""
+  })
+  document.body.appendChild(exclamationMarkContainer)
+
+  // Flash the exclamation mark container
+  for (let i = 0; i < 3; i++) {
+    hideElement(".exclamation-mark-container")
+    await delay(200)
+    showElement(".exclamation-mark-container")
+    await delay(200)
+  }
+
+  // Animate out exclamation marks
+  await animateOutExclamationMarks(EXC_IN_NUMBER_OF_LINES, 500)
 
   // Pause playback
   audio.pause()
 }
 
-async function animateTheLoungeConjecture(numberOfRepeats, totalAnimationTime) {
+async function animateTheLoungeConjecture(numberOfRepeats, totalAnimationTime, animateLines = false) {
   // Select the target container
   const projectTitleContainerDiv = document.querySelector(".project-title-container div")
 
@@ -227,7 +344,9 @@ async function animateTheLoungeConjecture(numberOfRepeats, totalAnimationTime) {
       const variant = newProjectTitleVariants[j]
 
       // Set the animation property for the line
-      //   variant.style.animation = `typing ${animationDelay / 1000}s steps(22) forwards`
+      if (animateLines) {
+        variant.style.animation = `typing ${animationDelay / 1000}s steps(22) forwards`
+      }
 
       // Append variant to DOM as new line
       projectTitleContainerDiv.appendChild(variant)
@@ -415,15 +534,15 @@ async function animateGenres(numberOfRepeats, totalAnimationTime) {
 }
 
 async function animateOutGenres(numberOfLines, totalAnimationTime) {
-    const exclamationMarkLines = Array.from(document.querySelectorAll(".exclamation-mark-line")).reverse()
-    const animationDelay = totalAnimationTime / numberOfLines
-  
-    for (const line of exclamationMarkLines) {
-      line.style.animation = `typing-reverse ${animationDelay / 1000}s steps(200) forwards`
-      await delay(animationDelay)
-      line.style.opacity = 0
-    }
+  const genresLines = Array.from(document.querySelectorAll(".genre")).reverse()
+  const animationDelay = totalAnimationTime / numberOfLines
+
+  for (const line of genresLines) {
+    line.style.animation = `typing-reverse ${animationDelay / 1000}s steps(200) forwards`
+    await delay(animationDelay)
+    line.style.opacity = 0
   }
+}
 
 async function animateGenre3Variants(word, numberOfRepeats, totalAnimationTime) {
   // Select the target container
